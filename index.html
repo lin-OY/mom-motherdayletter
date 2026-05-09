@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>母亲节快乐</title>
     <style>
         * {
@@ -18,13 +20,14 @@
             position: relative;
         }
 
+
         .title {
             text-align: center;
-            font-size: 3rem;
+            font-size: 1.8rem;
             color: #ff4d6d;
             font-weight: bold;
-            text-shadow: 2px 2px 0 #fff;
-            margin-top: 30px;
+            text-shadow: 1px 1px 0 #fff;
+            margin-top: 20px;
             animation: fadeInDown 1s ease-out;
         }
 
@@ -34,80 +37,84 @@
             height: 100%;
             top: 0;
             left: 0;
+            pointer-events: none;
         }
 
-        @keyframes floatInTop {
-            from {transform: translateY(-100px);opacity: 0;}
-            to {transform: translateY(0);opacity: 1;}
-        }
-        @keyframes floatInBottom {
-            from {transform: translateY(100px);opacity: 0;}
-            to {transform: translateY(0);opacity: 1;}
-        }
         @keyframes floatInLeft {
-            from {transform: translateX(-100px);opacity: 0;}
-            to {transform: translateX(0);opacity: 1;}
+            from {transform: translateX(-100px); opacity: 0;}
+            to {transform: translateX(0); opacity: 1;}
         }
         @keyframes floatInRight {
-            from {transform: translateX(100px);opacity: 0;}
-            to {transform: translateX(0);opacity: 1;}
+            from {transform: translateX(100px); opacity: 0;}
+            to {transform: translateX(0); opacity: 1;}
+        }
+        @keyframes floatInBottom {
+            from {transform: translateY(100px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
         }
         @keyframes fadeIn {
             from {opacity: 0;}
             to {opacity: 1;}
         }
+        @keyframes fadeInDown {
+            from {transform: translateY(-20px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
 
         .element {
             position: absolute;
-            font-size: 2rem;
+            font-size: 1.5rem;
             animation-duration: 1.5s;
             animation-fill-mode: forwards;
             opacity: 0;
         }
         .element1 {
-            top: 20%;left: 15%;
+            top: 20%; left: 10%;
             animation-name: floatInLeft;
             animation-delay: 0.3s;
         }
         .element2 {
-            top: 30%;right: 20%;
+            top: 30%; right: 10%;
             animation-name: floatInRight;
             animation-delay: 0.6s;
         }
         .element3 {
-            bottom: 25%;left: 20%;
+            bottom: 25%; left: 15%;
             animation-name: floatInBottom;
             animation-delay: 0.9s;
         }
         .element4 {
-            bottom: 20%;right: 15%;
+            bottom: 20%; right: 15%;
             animation-name: floatInBottom;
             animation-delay: 1.2s;
         }
 
-        /* 中间主文字 + 点击提示 */
         .main-text {
             position: absolute;
             top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             color: #ff4d6d;
             font-weight: bold;
             cursor: pointer;
             animation: fadeIn 2s ease-out 1.5s forwards;
             opacity: 0;
-            text-shadow: 2px 2px 0 #fff;
+            text-shadow: 1px 1px 0 #fff;
+            text-align: center;
+            width: 90%;
         }
         .tip-text {
             position: absolute;
             top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #a4133c;
             animation: fadeIn 2s ease-out 2s forwards;
             opacity: 0;
+            text-align: center;
+            width: 90%;
         }
 
         .flower-decor {
@@ -115,13 +122,12 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 4rem;
+            font-size: 2.5rem;
             color: #ff4d6d;
-            animation: fadeIn 1.5s ease-out 2s forwards;
+            animation: fadeIn 1.5s ease-out 2.5s forwards;
             opacity: 0;
         }
 
-        /* 信纸页面 */
         .letter-page {
             display: none;
             position: absolute;
@@ -130,36 +136,34 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to bottom, #ffccd5, #ffb3c1);
-            padding: 30px;
+            padding: 15px;
+            overflow-y: auto;
         }
         .letter-box {
             background: #fff;
-            width: 90%;
+            width: 100%;
             max-width: 600px;
-            height: 70vh;
-            margin: 30px auto 0;
-            padding: 25px;
+            margin: 10px auto 0;
+            padding: 15px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(255,77,109,0.3);
         }
         .letter-title {
             color: #a4133c;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             margin-bottom: 15px;
             text-align: center;
         }
-        /* 关键：信件内容 固定高度 + 可以滚动 */
         .letter-content {
             color: #800f2f;
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.8;
-            height: 55vh;
-            overflow-y: auto;  /* 垂直滑动 */
-            padding-right: 10px;
+            height: 65vh;
+            overflow-y: auto;
+            padding-right: 5px;
         }
-        /* 美化滚动条 */
         .letter-content::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         .letter-content::-webkit-scrollbar-thumb {
             background: #ffb3c1;
@@ -168,52 +172,51 @@
     </style>
 </head>
 <body>
-<div id="page1">
-    <div class="title">母亲节快乐</div>
+    <div id="page1">
+        <div class="title">母亲节快乐</div>
 
-    <div class="floating-elements">
-        <div class="element element1">💐</div>
-        <div class="element element2">❤️ LOVE YOU MOM</div>
-        <div class="element element3">🍬</div>
-        <div class="element element4">💌</div>
+        <div class="floating-elements">
+            <div class="element element1">💐</div>
+            <div class="element element2">❤️ LOVE YOU MOM</div>
+            <div class="element element3">🍬</div>
+            <div class="element element4">💌</div>
+        </div>
+
+        <div class="main-text" id="openLetter">妈妈，您辛苦了</div>
+        <div class="tip-text">点击此处打开信封</div>
+
+        <div class="flower-decor">🌸🌷🌼</div>
     </div>
 
-    <div class="main-text" id="openLetter">妈妈，您辛苦了</div>
-    <!-- 新增：点击提示文字 -->
-    <div class="tip-text">点击上方字体打开信封</div>
-
-    <div class="flower-decor">🌸🌷🌼</div>
-</div>
-
-<div class="letter-page" id="page2">
-    <div class="letter-box">
-        <div class="letter-title">致 我最亲爱的妈妈</div>
-        <div class="letter-content">
-            母亲节快乐！<br>
-            这是我给你写的一封不会泛黄的信!<br>
-            我想对你说<br>
-            你先是你自己，然后才是我的妈妈。<br>
-            我用一辈子和你说再见，而你却用一辈子和我说 “路上小心”。<br>
-            谢谢你把我带到这个世界，也谢谢你永远站在我这边。<br>
-            妈，我现在上大学了，越来越懂得你的伟大。不是那种轰轰烈烈的伟大，是每一天、每一顿饭、每一次忍让、每一次擦干眼泪继续过日子的那种了不起。
-            你从来没有吃过什么好的，没去过什么地方，没见过什么世面，也不要任何东西。我有时候想想，真的心疼得说不出话。
-            你明明那么不容易，却从来不喊苦；你明明也可以有自己的生活，却把所有都给了这个家。
-            谢谢你把我们带到这个世界上，你生的几个女儿都很爱你，你这些年受到的苦我们都记在心里。你是世界上最伟大的妈妈也是我心中最厉害的女英雄。
-            我不敢保证能给你多优渥的生活，但我一定能让你，再也不用吃从前那些苦。从前你为我撑起一片天，往后换我做你的避风港。
-            我一直忘不了高中的时候，有一次我去学校，在岔路口和你分开的瞬间。我看着你转身的背影，突然就慌了神 —— 我在想，我还有多少次这样回家的机会呢？那时候我才发现，原来我是这么念家的人。
-            所以后来我每次回来都要说一句 “我回来了”。有次你笑着说 “回来就回来呗”，可我就是要告诉你一声我又回到你身边了。
-            我常常会想，如果我的妈妈不是你，会怎么样？可无论别人的妈妈有多好，我都还是会庆幸：还好是你做了我的妈妈。你永远是我心里，最好的那一个。
-            <br>
-            谢谢你，妈妈。谢谢你那么坚强，谢谢你留在这个家，谢谢你让我成为你的孩子。<br>
+    <div class="letter-page" id="page2">
+        <div class="letter-box">
+            <div class="letter-title">致 我最爱的妈妈</div>
+            <div class="letter-content">
+                母亲节快乐！<br>
+                这是我给你写的一封不会泛黄的信!<br>
+                我想对你说<br>
+                你先是你自己，然后才是我的妈妈。<br>
+                我用一辈子和你说再见，而你却用一辈子和我说 “路上小心”。<br>
+                谢谢你把我带到这个世界，也谢谢你永远站在我这边。<br>
+                妈，我现在上大学了，越来越懂得你的伟大。不是那种轰轰烈烈的伟大，是每一天、每一顿饭、每一次忍让、每一次擦干眼泪继续过日子的那种了不起。
+                你从来没有吃过什么好的，没去过什么地方，没见过什么世面，也不要任何东西。我有时候想想，真的心疼得说不出话。
+                你明明那么不容易，却从来不喊苦；你明明也可以有自己的生活，却把所有都给了这个家。
+                谢谢你把我们带到这个世界上，你生的几个女儿都很爱你，你这些年受到的苦我们都记在心里。你是世界上最伟大的妈妈也是我心中最厉害的女英雄。
+                我不敢保证能给你多优渥的生活，但我一定能让你，再也不用吃从前那些苦。从前你为我撑起一片天，往后换我做你的避风港。
+                我一直忘不了高中的时候，有一次我去学校，在岔路口和你分开的瞬间。我看着你转身的背影，突然就慌了神 —— 我在想，我还有多少次这样回家的机会呢？那时候我才发现，原来我是这么念家的人。
+                所以后来我每次回来都要说一句 “我回来了”。有次你笑着说 “回来就回来呗”，可我就是要告诉你一声我又回到你身边了。
+                我常常会想，如果我的妈妈不是你，会怎么样？可无论别人的妈妈有多好，我都还是会庆幸：还好是你做了我的妈妈。你永远是我心里，最好的那一个。
+                <br>
+                谢谢你，妈妈。谢谢你那么坚强，谢谢你留在这个家，谢谢你让我成为你的孩子。<br>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.getElementById('openLetter').addEventListener('click', function(){
-        document.getElementById('page1').style.display = 'none';
-        document.getElementById('page2').style.display = 'block';
-    });
-</script>
+    <script>
+        document.getElementById('openLetter').addEventListener('click', function(){
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
